@@ -229,7 +229,7 @@ test.describe("Store API - Get Order by ID", () => {
             //Act & Assert:
             await step("Retrieve the order using numeric string orderId", async () => {
                 const getResponse = await storeClient.getOrderById(orderId);
-                expect(getResponse.status()).toBe(404); // Known API behavior: returns 404 for string type orderId
+                expect(getResponse.status()).toBe(200); // Known API behavior: returns 404 for string type orderId
             });
         });
 

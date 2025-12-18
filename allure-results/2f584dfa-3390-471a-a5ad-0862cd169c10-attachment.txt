@@ -1,0 +1,21 @@
+TEST STEP : Initialize data without name
+TEST STEP : Send request
+Response body: {
+  "id": 1765562879780,
+  "category": {
+    "id": 1,
+    "name": "Dogs"
+  },
+  "name": "",
+  "photoUrls": [
+    "http://example.com/photo1.jpg"
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "name": "friendly"
+    }
+  ],
+  "status": "available"
+}
+TEST STEP : Validate status code

@@ -1,0 +1,5 @@
+TEST STEP : Initialize PetBuilder and attach state
+TEST STEP : Send request to create pet
+TEST STEP : Update pet name to 'MaxForm' using form data
+TEST STEP : Validate status code
+TEST STEP : Validate updated name and unchanged status in response

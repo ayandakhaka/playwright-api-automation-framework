@@ -1,0 +1,6 @@
+TEST STEP : Create a pet to ensure there is data
+TEST STEP : Find pets with no status parameter
+TEST STEP : Validate status code
+Response body: []
+Number of pets returned: 0
+TEST STEP : Verify that some pets are returned

@@ -1,0 +1,3 @@
+TEST STEP : Attempt to delete a pet with special characters in ID
+TEST STEP : Validate status code
+TEST STEP : Validate error message

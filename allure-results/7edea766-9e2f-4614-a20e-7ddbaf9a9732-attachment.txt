@@ -1,0 +1,2 @@
+TEST STEP : Place a new order to retrieve later
+TEST STEP : Retrieve the order using numeric string orderId

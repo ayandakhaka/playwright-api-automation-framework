@@ -1,0 +1,9 @@
+TEST STEP : Place a new order to retrieve later
+Body of placed order: {
+  "id": 7940836282692510000,
+  "petId": 31744,
+  "quantity": 1,
+  "status": "placed",
+  "complete": false
+}
+TEST STEP : Retrieve the order by ID

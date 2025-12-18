@@ -1,0 +1,1 @@
+[{"values":["https://petstore.swagger.io/v2"],"name":"BASE_URL"},{"values":["QA"],"name":"ENVIRONMENT"},{"values":["Ayanda Khaka"],"name":"TESTER"},{"values":["CI"],"name":"EXECUTION_TYPE"},{"values":["Regression Suite - QA"],"name":"REPORT_NAME"}]

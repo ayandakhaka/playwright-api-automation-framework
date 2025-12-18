@@ -1,0 +1,9 @@
+TEST STEP : Initialize PetBuilder and attach state
+TEST STEP : Send request to create pet
+TEST STEP : Upload image for the pet
+TEST STEP : Validate status code
+Response body: {
+  "code": 200,
+  "type": "unknown",
+  "message": "additionalMetadata: null\nFile uploaded to ./FB_IMG_17084971361856946.jpg, 247867 bytes"
+}

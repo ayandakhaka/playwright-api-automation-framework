@@ -1,0 +1,3 @@
+TEST STEP : Initialize data without name
+TEST STEP : Send request
+TEST STEP : Validate status code

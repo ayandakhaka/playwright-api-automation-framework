@@ -1,0 +1,31 @@
+TEST STEP : Initialize PetBuilder and attach state to test report
+TEST STEP : Initialize data with multiple photo urls
+TEST STEP : Add pet with multiple photo urls
+Response body: {
+  "id": 1765559858893,
+  "category": {
+    "id": 1,
+    "name": "Dogs"
+  },
+  "name": "Buddy",
+  "photoUrls": [
+    "http://example.com/photo1.jpg",
+    "http://example.com/photo1.jpg",
+    "http://example.com/photo2.jpg",
+    "http://example.com/photo3.jpg",
+    "http://example.com/photo4.jpg"
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "name": "friendly"
+    },
+    {
+      "id": 1,
+      "name": "friendly"
+    }
+  ],
+  "status": "available"
+}
+TEST STEP : Validate photo url
+TEST STEP : Validate all url are valid

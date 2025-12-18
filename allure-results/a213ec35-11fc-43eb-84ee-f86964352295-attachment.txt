@@ -1,0 +1,3 @@
+TEST STEP : Attempt to delete a non-existing pet
+TEST STEP : Validate status code
+No response body returned (expected)

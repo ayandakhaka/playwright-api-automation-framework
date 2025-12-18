@@ -1,0 +1,9 @@
+TEST STEP : Create a new pet to order
+Response body: {
+  "id": 9223372036854768000,
+  "petId": 70183,
+  "quantity": 1,
+  "status": "placed",
+  "complete": false
+}
+TEST STEP : Validate the order response

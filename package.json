@@ -1,0 +1,22 @@
+{
+  "name": "playwright-api-automation",
+  "version": "1.0.0",
+  "description": "API automation framework using Playwright and TypeScript",
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:report": "allure generate allure-results -o allure-report --clean && allure open allure-report",
+    "clean": "rm -rf dist allure-report allure-results"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.44.0",
+    "@types/node": "^20.5.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2",
+    "allure-commandline": "^2.22.0"
+  }
+}

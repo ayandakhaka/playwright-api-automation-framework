@@ -1,0 +1,10 @@
+TEST STEP : Initialize PetBuilder and attach state
+TEST STEP : Send request to create pet
+TEST STEP : Update pet name to 'BuddyForm' and status to 'sold' using form data
+TEST STEP : Validate status code
+Response body: {
+  "code": 200,
+  "type": "unknown",
+  "message": "1765614745147"
+}
+TEST STEP : Validate updated name and status in response

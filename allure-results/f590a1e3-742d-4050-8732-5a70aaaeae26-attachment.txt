@@ -1,0 +1,3 @@
+TEST STEP : Initialize PetBuilder and attach state to test report
+TEST STEP : Add new pet without name
+TEST STEP : Validate http status code

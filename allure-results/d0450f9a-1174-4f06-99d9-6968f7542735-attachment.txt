@@ -1,0 +1,5 @@
+TEST STEP : Initialize PetBuilder and attach state
+TEST STEP : Send request to create pet
+TEST STEP : Update existing pet with boundary values
+TEST STEP : Validate status code
+TEST STEP : Validate updated fields with boundary values

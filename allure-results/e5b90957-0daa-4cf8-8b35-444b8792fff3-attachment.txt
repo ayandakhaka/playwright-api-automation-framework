@@ -1,0 +1,6 @@
+TEST STEP : Initialize PetBuilder and attach state
+TEST STEP : Send request to create pet
+TEST STEP : Find pets by status 'available'
+TEST STEP : Validate status code
+TEST STEP : Verify that at least one pet is returned
+TEST STEP : Verify that returned pets have status 'available'

@@ -1,0 +1,3 @@
+TEST STEP : Initialize PetBuilder and attach state
+TEST STEP : Send request to create pet
+Response time: 385ms

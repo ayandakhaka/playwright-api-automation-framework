@@ -1,0 +1,22 @@
+TEST STEP : Initialize PetBuilder and attach state to test report
+TEST STEP : Validating response body
+Response body: {
+  "id": 1765554138025,
+  "category": {
+    "id": 1,
+    "name": "Dogs"
+  },
+  "name": "Buddy",
+  "photoUrls": [
+    "http://example.com/photo1.jpg"
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "name": "friendly"
+    }
+  ],
+  "status": "available"
+}
+TEST STEP : Retrieve the added pet
+TEST STEP : Validate the status code

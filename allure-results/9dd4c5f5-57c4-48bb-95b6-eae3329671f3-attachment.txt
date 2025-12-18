@@ -1,0 +1,3 @@
+TEST STEP : Place order with status: placed
+TEST STEP : Place order with status: approved
+TEST STEP : Place order with status: delivered

@@ -1,0 +1,5 @@
+TEST STEP : Initialize PetBuilder and attach state
+TEST STEP : Send request to create pet
+TEST STEP : Update existing pet with large data set
+TEST STEP : Validate status code
+TEST STEP : Validate all photo URLs and tags are updated

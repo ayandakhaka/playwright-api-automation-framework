@@ -1,0 +1,6 @@
+{
+  "name": "Playwright API Automation",
+  "type": "CI",
+  "buildName": "local-build",
+  "buildUrl": ""
+}

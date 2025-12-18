@@ -1,0 +1,4 @@
+TEST STEP : Initialize pet with multiple tags
+TEST STEP : Send request
+TEST STEP : Validate status
+TEST STEP : Validate tags are not empty

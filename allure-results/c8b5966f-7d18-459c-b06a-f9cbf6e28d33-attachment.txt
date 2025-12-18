@@ -1,0 +1,6 @@
+TEST STEP : Attempt to get order with invalid orderId (alphabets)
+Body of get response: {
+  "code": 404,
+  "type": "unknown",
+  "message": "java.lang.NumberFormatException: For input string: \"invalid_id\""
+}

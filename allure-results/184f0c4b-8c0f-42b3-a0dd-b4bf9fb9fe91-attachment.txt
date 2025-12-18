@@ -1,0 +1,6 @@
+TEST STEP : Initialize PetBuilder and attach state
+TEST STEP : Send request to create pet
+TEST STEP : Delete the existing pet
+TEST STEP : Validate deletion status code
+TEST STEP : Attempt to retrieve the deleted pet
+TEST STEP : Validate that the pet no longer exists

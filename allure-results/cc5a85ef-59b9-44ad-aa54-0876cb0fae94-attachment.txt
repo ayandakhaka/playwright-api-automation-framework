@@ -1,0 +1,3 @@
+TEST STEP : Initialize PetBuilder and attach state
+TEST STEP : Attempt to update non-existing pet
+TEST STEP : Validate status code

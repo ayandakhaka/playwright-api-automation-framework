@@ -1,0 +1,88 @@
+TEST STEP : Place a new order to retrieve later
+Placed order ID: 7940836282692510000
+TEST STEP : Retrieve the order by ID
+Body of placed order: {
+  "_request": {
+    "_type": "APIRequestContext",
+    "_guid": "request-context@7565017ae7f6c4806ec86e078ae6efed"
+  },
+  "_initializer": {
+    "fetchUid": "02fd7ff03a84dff4a8fc3337bdd0ad37",
+    "url": "https://petstore.swagger.io/v2/store/order/7940836282692510000",
+    "status": 404,
+    "statusText": "Not Found",
+    "headers": [
+      {
+        "name": "Date",
+        "value": "Thu, 18 Dec 2025 09:30:25 GMT"
+      },
+      {
+        "name": "Content-Type",
+        "value": "application/json"
+      },
+      {
+        "name": "Transfer-Encoding",
+        "value": "chunked"
+      },
+      {
+        "name": "Connection",
+        "value": "keep-alive"
+      },
+      {
+        "name": "Access-Control-Allow-Origin",
+        "value": "*"
+      },
+      {
+        "name": "Access-Control-Allow-Methods",
+        "value": "GET, POST, DELETE, PUT"
+      },
+      {
+        "name": "Access-Control-Allow-Headers",
+        "value": "Content-Type, api_key, Authorization"
+      },
+      {
+        "name": "Server",
+        "value": "Jetty(9.2.9.v20150224)"
+      }
+    ]
+  },
+  "_headers": {
+    "_headersMap": {
+      "_map": {}
+    },
+    "_headersArray": [
+      {
+        "name": "Date",
+        "value": "Thu, 18 Dec 2025 09:30:25 GMT"
+      },
+      {
+        "name": "Content-Type",
+        "value": "application/json"
+      },
+      {
+        "name": "Transfer-Encoding",
+        "value": "chunked"
+      },
+      {
+        "name": "Connection",
+        "value": "keep-alive"
+      },
+      {
+        "name": "Access-Control-Allow-Origin",
+        "value": "*"
+      },
+      {
+        "name": "Access-Control-Allow-Methods",
+        "value": "GET, POST, DELETE, PUT"
+      },
+      {
+        "name": "Access-Control-Allow-Headers",
+        "value": "Content-Type, api_key, Authorization"
+      },
+      {
+        "name": "Server",
+        "value": "Jetty(9.2.9.v20150224)"
+      }
+    ]
+  }
+}

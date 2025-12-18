@@ -1,0 +1,3 @@
+TEST STEP : Find pets by invalid status 'flying'
+TEST STEP : Validate status code
+TEST STEP : Verify that no pets are returned

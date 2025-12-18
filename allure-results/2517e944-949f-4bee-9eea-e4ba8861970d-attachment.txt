@@ -1,0 +1,8 @@
+TEST STEP : Attempt to place order without petId
+Response body: {
+  "id": 9223372036854768000,
+  "petId": 60666,
+  "quantity": 1,
+  "status": "placed",
+  "complete": false
+}

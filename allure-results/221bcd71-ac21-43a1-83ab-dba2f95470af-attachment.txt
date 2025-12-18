@@ -1,0 +1,6 @@
+TEST STEP : Attempt to get order with non-existing orderId
+Body of get response: {
+  "code": 1,
+  "type": "error",
+  "message": "Order not found"
+}

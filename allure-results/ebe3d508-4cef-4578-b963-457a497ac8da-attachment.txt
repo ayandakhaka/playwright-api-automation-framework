@@ -1,0 +1,6 @@
+TEST STEP : Initialize PetBuilder and attach state
+TEST STEP : Send request to create pet
+TEST STEP : Update existing pet and measure response time
+Response time for updating pet: 305ms
+TEST STEP : Validate status code
+TEST STEP : Validate response time is under 2000ms

@@ -1,0 +1,2 @@
+TEST STEP : Upload image for a non-existing pet
+TEST STEP : Validate status code

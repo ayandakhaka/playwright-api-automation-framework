@@ -1,0 +1,2 @@
+TEST STEP : Initialize PetBuilder and attach state to test report
+Response time: 925ms

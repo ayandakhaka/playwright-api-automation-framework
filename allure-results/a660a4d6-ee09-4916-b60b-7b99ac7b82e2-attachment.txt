@@ -1,0 +1,8 @@
+TEST STEP : Attempt to place order with negative quantity
+Response body: {
+  "id": 9223372036854768000,
+  "petId": 50236,
+  "quantity": 1,
+  "status": "placed",
+  "complete": false
+}

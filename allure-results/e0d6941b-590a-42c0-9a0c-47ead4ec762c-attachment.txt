@@ -1,0 +1,6 @@
+TEST STEP : Attempt to place order with string petId
+Response body: {
+  "code": 500,
+  "type": "unknown",
+  "message": "something bad happened"
+}

@@ -1,0 +1,4 @@
+TEST STEP : Initialize PetBuilder and attach state to test report
+TEST STEP : Validating response body
+TEST STEP : Retrieve the added pet
+TEST STEP : Validate the status code

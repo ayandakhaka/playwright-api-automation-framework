@@ -1,0 +1,5 @@
+TEST STEP : Initialize data
+TEST STEP : Submit request
+TEST STEP : Validate status
+TEST STEP : Validate photo URLs list is not empty
+TEST STEP : Validate all URLs are valid

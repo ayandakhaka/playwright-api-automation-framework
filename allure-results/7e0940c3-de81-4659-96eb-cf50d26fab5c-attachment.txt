@@ -1,0 +1,4 @@
+TEST STEP : Attempt to delete a pet with invalid ID
+TEST STEP : Validate status code
+TEST STEP : Validate error message
+No response body returned (expected)

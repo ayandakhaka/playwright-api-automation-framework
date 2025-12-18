@@ -1,0 +1,10 @@
+// api/payload/model/Tag.ts
+export class Tag {
+  id: number;
+  name: string;
+
+  constructor(id?: number, name?: string) {
+    this.id = id ?? 0;
+    this.name = name ?? "";
+  }
+}

@@ -25,7 +25,7 @@ export class PetBuilder {
 
   // Set Name
   withName(name?: string): PetBuilder {
-    this._name = name;
+    this._name = name || "";
     return this;
   }
 

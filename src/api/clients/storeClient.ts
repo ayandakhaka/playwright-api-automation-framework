@@ -22,9 +22,9 @@ export class StoreClient {
      * Get an order by its ID
      */
     async getOrderById(orderId?: number | string) {
-        // if (!orderId) {
-        //     throw new Error("orderId must be provided");
-        // }
+        if (!orderId) {
+            throw new Error("orderId must be provided");
+        }
 
         const route = buildRoute(Routes.get_order_by_id, { orderId });
         return this.request.get(route);

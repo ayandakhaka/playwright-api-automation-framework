@@ -34,15 +34,14 @@ jobs:
         run: npx playwright test
         continue-on-error: true   # continue even if tests fail
 
-      # 6️⃣ Send email notification
+      # 6️⃣ Debug compiled files (optional)
+      - name: Debug compiled files
+        run: ls -R dist/scripts
+
+      # 7️⃣ Send email notification
       - name: Send email notification
         if: always()   # always run
         env:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_PASS: ${{ secrets.GMAIL_PASS }}
-        run: node /scripts/send-email.js
-
-      # 7️⃣ Optional: debug compiled files
-      - name: Debug compiled files
-        if: failure()
-        run: ls -R dist/scripts
+        run: node dist/scripts/send-email.js

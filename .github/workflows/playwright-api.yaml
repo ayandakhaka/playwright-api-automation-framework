@@ -26,11 +26,14 @@ jobs:
         run: npm test
         continue-on-error: true
 
+      - name: Build TypeScript
+        run: npx tsc
+
       - name: Send email notification
         if: always()
         env:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
-          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
-          EMAIL_TO: ${{ secrets.EMAIL_TO }}
-        run: npx ts-node .github/scripts/send-email.ts
+          GMAIL_PASS: ${{ secrets.GMAIL_PASS }}
+        run: |
+          node dist/.github/scripts/send-email.js
 

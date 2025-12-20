@@ -32,4 +32,5 @@ jobs:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
-        run: npx ts-node scripts/send-email.ts
+        run: npx ts-node .github/scripts/send-email.ts
+

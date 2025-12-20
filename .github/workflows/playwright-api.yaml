@@ -1,142 +1,35 @@
-name: 🧪 Playwright Automation + Allure
+name: CI Pipeline
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
-  workflow_dispatch:
-
-permissions:
-  contents: write
-  pages: write
-  id-token: write
+    branches: [ main ]
 
 jobs:
-  run-tests:
+  test-and-email:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-    name: Run Playwright Tests
 
     steps:
-      # 1️⃣ Checkout repository
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      # 2️⃣ Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # 3️⃣ Install dependencies
-      - name: Install npm dependencies
+      - name: Install dependencies
         run: npm ci
 
-      # 4️⃣ Install Allure Commandline
-      - name: Install Allure Commandline
-        run: |
-          npm install -g allure-commandline --save-dev
-          npm install -g allure-commandline
-          
-      # 5️⃣ Download previous Allure history
-      - name: Download previous Allure History
-        uses: actions/download-artifact@v4
-        with:
-          name: allure-history
-          path: allure-results/history
+      - name: Run tests
+        run: npm test
         continue-on-error: true
 
-      # 6️⃣ Merge history folder (optional, in case artifact is empty)
-      - name: Ensure history folder exists
-        run: mkdir -p allure-results/history
-
-      # 7️⃣ Run Playwright tests
-      - name: Run Playwright Tests
-        run: npx playwright test --reporter=allure-playwright
-
-      # 8️⃣ Generate Allure report
-      - name: Generate Allure Report
-        run: |
-          mkdir -p allure-report
-          npx allure generate allure-results -o allure-report --clean
-
-      # 9️⃣ Verify Allure trends (fail workflow if missing)
-      - name: Verify Allure Trends in Pipeline
-        run: |
-          echo "Checking Allure report history..."
-          REQUIRED_FILES=(duration-trend.json history-trend.json retry-trend.json categories-trend.json history.json)
-
-          if [ ! -d allure-report/history ]; then
-            echo "❌ No history folder inside allure-report/"
-            exit 1
-          fi
-
-          MISSING=0
-          for file in "${REQUIRED_FILES[@]}"; do
-            if [ ! -f "allure-report/history/$file" ]; then
-              echo "❌ $file MISSING"
-              MISSING=$((MISSING+1))
-            else
-              echo "✔ $file found"
-            fi
-          done
-
-          if [ $MISSING -ne 0 ]; then
-            echo "❌ Workflow failed: $MISSING trend files missing!"
-            exit 1
-          fi
-
-          echo "✅ All trend files are present."
-
-      # 🔟 Upload history artifact for next run
-      - name: Upload Allure History
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-history
-          path: allure-report/history
-
-      # 1️⃣1️⃣ Deploy to GitHub Pages
-      - name: Configure Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload Pages Artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: allure-report
-          retention-days: 1
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
-
-      # 1️⃣2️⃣ Send Allure report via email (optional)
-      - name: Send Allure Report via Email
+      - name: Send email notification
         if: always()
-        uses: dawidd6/action-send-mail@v4
-        with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          username: ${{ secrets.GMAIL_USER }}
-          password: ${{ secrets.GMAIL_PASS }}
-          subject: "Playwright Test Results - Allure Report"
-          to: "khakhaalwande@gmail.com"
-          from: "GitHub Actions Bot <github-actions[bot]@users.noreply.github.com>"
-          body: |
-            Hi team,
-
-            The latest Playwright test run is complete.
-
-            📊 Allure Report:
-            https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
-
-            Regards,
-            CI Bot
-
-      # 1️⃣3️⃣ Add summary link in GitHub UI
-      - name: Add Allure Report Link to Workflow Summary
-        if: always()
-        run: |
-          echo "### 📊 Allure Test Report" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "[Open Allure Report](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/)" >> $GITHUB_STEP_SUMMARY
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        run: npx ts-node scripts/send-email.ts

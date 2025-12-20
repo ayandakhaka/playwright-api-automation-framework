@@ -10,13 +10,15 @@
     "clean": "rm -rf dist allure-report allure-results"
   },
   "dependencies": {
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "nodemailer": "^7.0.11"
   },
   "devDependencies": {
     "@playwright/test": "^1.44.0",
     "@types/node": "^20.5.2",
+    "@types/nodemailer": "^7.0.4",
     "allure-playwright": "^3.4.3",
-    "ts-node": "^10.9.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.2.2"
   }
 }

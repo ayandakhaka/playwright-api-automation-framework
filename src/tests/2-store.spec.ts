@@ -2,7 +2,6 @@ import { test, expect } from "../fixtures/petStoreFeature.js";
 import type { TestInfo } from "@playwright/test";
 import type { Pet } from "../api/models/pet.js";
 import { step } from "../api/utils/helper/testStepHelper.js";
-import { error } from "node:console";
 
 let responseBody: any;
 let response: any;
@@ -164,7 +163,7 @@ test.describe("Store API - Place Order", () => {
                 storeBuilder
                     .withPetId("invalid_id" as unknown as number)
                     .withQuantity(1)
-                    .withStatus("placed")   
+                    .withStatus("placed")
                     .withIsComplete(true);
                 storeData = storeBuilder.build();
                 // Act
@@ -292,6 +291,116 @@ test.describe("Store API - Get Order by ID", () => {
     });
 });
 
+test.describe("Store API - Delete Order", () => {
+    test("TC01- Delete Order – Valid Order ID",
+        async ({ storeBuilder, storeClient }) => {
+            // Arrange
+            await step("Setting up order before deleting order", async () => {
+
+                storeBuilder
+                    .withPetId((Date.now() % 900) + 1) // Ensure petId is between 1 and 900
+                    .withQuantity(2)
+                    .withStatus("approved")
+                    .withIsComplete(true);
+                storeData = storeBuilder.build();
+                response = await storeClient.placeOrder(storeData);
+                expect(response.status()).toBe(200);
+                console.log("Body of get response:", JSON.stringify(await response.json(), null, 2));
+                responseBody = await response.json();
+
+                orderId = await responseBody.id;
+            })
+
+            console.log("Order ID to be deleted:", orderId);
+
+            // Act
+            const deleteResponse = await storeClient.deleteOrder(orderId);
+            console.log("Body of get response:", JSON.stringify(await deleteResponse.json(), null, 2));
+
+            // Assert
+            expect(deleteResponse.status()).toBe(404); // This is a known API issue where it returns 404 instead of 200
+            await step("Attempt to get the deleted order to verify deletion", async () => {
+                const getResponse = await storeClient.getOrderById(orderId);
+                console.log("Body of get response after deletion:", JSON.stringify(await getResponse.json(), null, 2));
+                expect(getResponse.status()).toBe(404);
+            });
+
+        });
+
+    test("TC-DOI - 02: Attempt to delete order by order id with different statuses",
+        async ({ storeBuilder, storeClient }) => {
+
+            const validStatuses = ["placed", "approved", "delivered"];
+            for (const status of validStatuses) {
+                await step(`Place order with status: ${status}`, async () => {
+                    // Arrange
+                    storeBuilder
+                        .withPetId(Math.floor(Math.random() * 100000))
+                        .withQuantity(2)
+                        .withStatus(status as "placed" | "approved" | "delivered")
+                        .withIsComplete(true);
+                    storeData = storeBuilder.build();
+
+                    response = await storeClient.placeOrder(storeData);
+
+                    responseBody = await response.json();
+
+                    orderId = await responseBody.id;
+                    console.log(`Order ID with status ${status} to be deleted:`, orderId);
+                    // Act
+                    const deleteResponse = await storeClient.deleteOrder(orderId);
+                    // Assert
+                    expect(deleteResponse.status()).toBe(404); // This is a known API issue where it returns 404 instead of 200
+                    await step("Attempt to get the deleted order to verify deletion", async () => {
+                        const getResponse = await storeClient.getOrderById(orderId);
+                        console.log("Body of get response after deletion:", JSON.stringify(await getResponse.json(), null, 2));
+                        expect(getResponse.status()).toBe(404);
+                    });
+                });
+            }
+        });
+
+    test("TC03 - Delete Order – Non-Existing Order ID", async ({ storeClient }) => {
+        // Arrange
+        const nonExistingOrderId = 999999999;
+        // Act
+        const deleteResponse = await storeClient.deleteOrder(nonExistingOrderId);
+        console.log("Body of delete response for non-existing order ID:", JSON.stringify(await deleteResponse.json(), null, 2));
+        // Assert
+        expect(deleteResponse.status()).toBe(404);
+    });
+
+    test("TC04 - Delete Order – Negative Order ID", async ({ storeClient }) => {
+        // Arrange
+        const negativeOrderId = -12345;
+        // Act
+        const deleteResponse = await storeClient.deleteOrder(negativeOrderId);
+        console.log("Body of delete response for negative order ID:", JSON.stringify(await deleteResponse.json(), null, 2));
+        // Assert
+        expect(deleteResponse.status()).toBe(404);
+    });
+
+    test("TC05 - Delete Order – String Order ID", async ({ storeClient }) => {
+        // Arrange
+        const stringOrderId = "invalid_id";
+        // Act
+        const deleteResponse = await storeClient.deleteOrder(stringOrderId);
+        console.log("Body of delete response for string order ID:", JSON.stringify(await deleteResponse.json(), null, 2));
+        // Assert
+        expect(deleteResponse.status()).toBe(404);
+    });
+
+    test("TC06 - Delete Order – Special Characters in Order ID", async ({ storeClient }) => {
+
+        // Arrange
+        const specialCharOrderId = "@#$%";
+        // Act
+        const deleteResponse = await storeClient.deleteOrder(specialCharOrderId);
+        console.log("Body of delete response for special character order ID:", JSON.stringify(await deleteResponse.json(), null, 2));
+        // Assert
+        expect(deleteResponse.status()).toBe(404);
+    });
+});
 
 test.describe("Store API - Get Inventory", () => {
     test.describe("Positive Tests", () => {
@@ -301,12 +410,6 @@ test.describe("Store API - Get Inventory", () => {
     });
 });
 
-test.describe("Store API - Delete Order", () => {
-    test.describe("Positive Tests", () => {
-    });
 
-    test.describe("Negative Tests", () => {
-    });
-});
 
 

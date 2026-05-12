@@ -193,7 +193,7 @@ test.describe("Pet Store API", () => {
     //  TC06 – Get Pet by ID
     // =========================================
     //
-    test.describe("Test Case for Get By ID endpoint", () => {
+    test.describe("Test Case Get Pet By ID endpoint", () => {
 
         test("TC06 – Get Pet by ID", async ({ petClient, petBuilder }) => {
 
@@ -1422,6 +1422,7 @@ test.describe("Pet Store API", () => {
                 }
             });
         });
+
     });
 });
 
